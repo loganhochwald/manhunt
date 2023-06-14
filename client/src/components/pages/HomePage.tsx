@@ -16,7 +16,6 @@ const HomePage = () => {
       <div>
         <h1>Welcome, {user.name}!</h1>
         <LogoutButton/>
-        <ChaseCam />
       </div>
     )
   )

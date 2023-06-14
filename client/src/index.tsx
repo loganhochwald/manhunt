@@ -16,7 +16,7 @@ const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Auth0ProviderWithNavigate>
+      <Auth0ProviderWithNavigate >
         <App />
       </Auth0ProviderWithNavigate>
     </BrowserRouter>
