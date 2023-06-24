@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import SocketContext from '../contexts/Socket/SocketContext';
+import { User } from '../contexts/Socket/SocketContext';
 import { useAuth0 } from '@auth0/auth0-react';
 import axios from 'axios'
 
@@ -141,16 +142,35 @@ export const SignupButton = () => {
   );
 };
 
-export const LeaveLobbyButton = () => {
-  const handleLeave = () => {
-    // add a socket function to emit "leave game"
+export const ButtonFirstPick = () => {
+  const { SetHunted } = useContext(SocketContext);
+  const { users } = useContext(SocketContext).SocketState;
+
+  const pickVictim = (users: User[]) => {
+    const victim = users[Math.floor(Math.random() * users.length)];
+    SetHunted(victim);
   };
-  return (
-    <Button
-      label='Leave'
-      route='/home'
-      onClick={handleLeave}
-      className='button__logout'
-    />
-  );
+
+  const handlePick = () => {
+    pickVictim(users);
+  }
+
+  return <Button label='Pick Your Victim' onClick={handlePick} route={''} />;
 };
+
+export const ButtonPickAgain = () => {
+  const { SetHunted } = useContext(SocketContext);
+  const { users } = useContext(SocketContext).SocketState;
+
+  const pickVictim = (users: User[]) => {
+    const victim = users[Math.floor(Math.random() * users.length)];
+    SetHunted(victim);
+  };
+
+  const handlePick = () => {
+    pickVictim(users);
+  }
+
+  return <Button label='Pick Again' onClick={handlePick} route={''} />;
+};
+
