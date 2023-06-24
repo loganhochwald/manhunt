@@ -61,7 +61,7 @@ export const ButtonToHome: React.FC = () => {
 };
 
 export const ButtonToGame: React.FC = () => {
-  return <Button label='Game Time' route='/onthehunt' />;
+  return <Button label='Start the Hunt' route='/onthehunt' />;
 };
 
 export const ButtonToProfile: React.FC = () => {

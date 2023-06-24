@@ -4,16 +4,16 @@ import { ButtonToHome, ButtonToHostGame } from '../components/Buttons';
 import { Container } from '../styles/Container';
 
 const HomePage = () => {
-  const { user, isAuthenticated } = useAuth0();
+  const { user } = useAuth0();
 
   return (
     <Container>
-      <h1 style={{ color: '#6e6b8c' }}>WOW { user?.given_name } WON</h1>
-        <br />
-        <br />
-        <ButtonToHome />
-        <ButtonToHostGame />
-      </Container>
+      <h1 style={{ color: '#6e6b8c' }}>WOW {user?.given_name} WON</h1>
+      <br />
+      <br />
+      <ButtonToHome />
+      <ButtonToHostGame />
+    </Container>
   );
 };
 
