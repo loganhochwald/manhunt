@@ -77,8 +77,15 @@ export const ButtonToJoinLobby: React.FC = () => {
 };
 
 export const ButtonToHostGame: React.FC = () => {
-  const { CreateGame } = useContext(SocketContext);
-  return <Button label='Host a Game' route='/lobby' onClick={CreateGame} />;
+  const { CreateGame, LeaveGame } = useContext(SocketContext);
+  const { user } = useAuth0();
+
+  const handleToHost = () => {
+    LeaveGame(user);
+    CreateGame();
+  }
+
+  return <Button label='Host a Game' route='/lobby' onClick={handleToHost} />;
 };
 
 export const LogoutButton = () => {
